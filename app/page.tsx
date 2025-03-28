@@ -7,9 +7,14 @@ import { NavItem } from "../components/NavItem";
 import { Card } from "../components/Card";
 
 export default function Dashboard() {
-  const [darkMode, setDarkMode] = useState(
-    typeof window !== "undefined" && localStorage.getItem("darkMode") === "true"
-  );
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const storedMode = localStorage.getItem("darkMode");
+    if (storedMode) {
+      setDarkMode(storedMode === "true");
+    }
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -24,7 +29,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
       {/* Sidebar */}
       <aside className="fixed h-screen w-64 bg-rose-600 dark:bg-rose-700 p-5 text-white">
-        <h1 className="text-2xl font-bold">YT Auto</h1>
+        <h1 className="text-2xl font-bold">AutoYT</h1>
         <nav className="mt-8 space-y-4">
           <NavItem icon={<Home size={20} />} label="Dashboard" />
           <NavItem icon={<Video size={20} />} label="AI Video" />
@@ -53,3 +58,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
