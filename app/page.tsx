@@ -1,16 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SunIcon, MoonIcon, Video, Mic, Image, Upload, Home } from "lucide-react";
 import { Button } from "../components/Button";
 import { NavItem } from "../components/NavItem";
 import { Card } from "../components/Card";
 
 export default function Dashboard() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    typeof window !== "undefined" && localStorage.getItem("darkMode") === "true"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("darkMode", String(darkMode));
+  }, [darkMode]);
 
   return (
-    <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
       {/* Sidebar */}
       <aside className="fixed h-screen w-64 bg-rose-600 dark:bg-rose-700 p-5 text-white">
         <h1 className="text-2xl font-bold">YT Auto</h1>
