@@ -26,7 +26,7 @@ const Footer = () => {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
             <a href="/" className="flex items-center gap-x-2">
-              <Image src="/logo.png" alt="Logo" width={30} height={30} className="rounded-full" />
+              {/* <Image src="/logo.png" alt="Logo" width={30} height={30} className="rounded-full" /> */}
               <p className="font-spaceGrotesk font-semibold text-xl">AutoYT</p>
             </a>
           </div>
