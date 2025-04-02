@@ -9,7 +9,7 @@ export async function generateVideo(script: string) {
     const response = await fetch("https://text-to-video.p.rapidapi.com/v3/process_text_and_search_media", {
         method: "POST",
         headers: {
-            'x-rapidapi-key': 'a31edf94ccmsh591b19161e4448fp1f3636jsn3cd66e78c9ef',
+            'x-rapidapi-key': apiKey,
             'x-rapidapi-host': 'text-to-video.p.rapidapi.com',
             'Content-Type': 'application/json'
         },
