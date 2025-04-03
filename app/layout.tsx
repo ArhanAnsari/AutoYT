@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "AutoYT",
-  description: "Fully automate your youtube channel with fully automated video generation.",
+  description:
+    "Fully automate your youtube channel with fully automated video generation.",
 };
 
 export default function RootLayout({
@@ -28,9 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-        {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

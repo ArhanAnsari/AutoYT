@@ -1,7 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { SunIcon, MoonIcon, Video, Mic, Image, Upload, Home } from "lucide-react";
+import {
+  SunIcon,
+  MoonIcon,
+  Video,
+  Mic,
+  Image,
+  Upload,
+  Home,
+} from "lucide-react";
 import { Button } from "../components/Button";
 import { NavItem } from "../components/NavItem";
 import { Card } from "../components/Card";
@@ -50,11 +58,26 @@ export default function Dashboard() {
             </Button>
           </header>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card title="Generate Script" description="Create AI-powered video scripts." />
-            <Card title="Generate Video" description="Convert script into AI-generated video." />
-            <Card title="Generate Voiceover" description="Use AI to narrate your video." />
-            <Card title="Generate Thumbnail" description="Create eye-catching thumbnails." />
-            <Card title="Upload & Schedule" description="Automatically upload videos to YouTube." />
+            <Card
+              title="Generate Script"
+              description="Create AI-powered video scripts."
+            />
+            <Card
+              title="Generate Video"
+              description="Convert script into AI-generated video."
+            />
+            <Card
+              title="Generate Voiceover"
+              description="Use AI to narrate your video."
+            />
+            <Card
+              title="Generate Thumbnail"
+              description="Create eye-catching thumbnails."
+            />
+            <Card
+              title="Upload & Schedule"
+              description="Automatically upload videos to YouTube."
+            />
           </div>
         </main>
       </div>
