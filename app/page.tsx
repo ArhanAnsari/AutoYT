@@ -6,16 +6,9 @@ import { Button } from "../components/Button";
 import { NavItem } from "../components/NavItem";
 import { Card } from "../components/Card";
 import Footer from "@/components/Footer";
-// import { generateScript } from "@/actions/generateScript";
-// import { generateVideo } from "@/actions/generateVideo";
-// import { generateVoice } from "@/actions/generateVoice";
-// import { generateThumbnail } from "@/actions/generateThumbnail";
-// import { uploadToYouTube } from "@/actions/uploadToYouTube";
 
 export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(false);
-  const [topic, setTopic] = useState("");
-  const [output, setOutput] = useState("");
 
   useEffect(() => {
     const storedMode = localStorage.getItem("darkMode");
