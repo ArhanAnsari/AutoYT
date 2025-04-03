@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-export default function Dashboard() {
+export default function GeneratePage() {
   const { data: session } = useSession();
   const [topic, setTopic] = useState("");
   const [output, setOutput] = useState("");
