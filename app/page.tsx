@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { SunIcon, MoonIcon, Video, Mic, Image, Upload, Home } from "lucide-react";
 import { Button } from "../components/Button";
 import { NavItem } from "../components/NavItem";
@@ -9,6 +11,8 @@ import Footer from "@/components/Footer";
 
 export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(false);
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     const storedMode = localStorage.getItem("darkMode");
@@ -31,7 +35,7 @@ export default function Dashboard() {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside className="h-screen w-64 bg-rose-600 dark:bg-rose-700 p-5 text-white">
-          <h1 className="text-2xl font-bold">AutoYT</h1>
+          <h1 className="text-2xl font-bold text-rose-600 cursor-pointer" onClick={() => router.push("/")}>AutoYT</h1>
           <nav className="mt-8 space-y-4">
             <NavItem icon={<Home size={20} />} label="Dashboard" />
             <NavItem icon={<Video size={20} />} label="AI Video" />
@@ -39,6 +43,23 @@ export default function Dashboard() {
             <NavItem icon={<Image size={20} />} label="Thumbnails" />
             <NavItem icon={<Upload size={20} />} label="Upload" />
           </nav>
+          {/* Header/Navbar */}
+        {/* Authentication Buttons */}
+        {session ? (
+          <button
+            onClick={() => signOut()}
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg shadow-md transition"
+          >
+            Sign Out
+          </button>
+        ) : (
+          <button
+            onClick={() => signIn()}
+            className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg shadow-md transition"
+          >
+            Sign In
+          </button>
+        )}
         </aside>
 
         {/* Main Content */}
