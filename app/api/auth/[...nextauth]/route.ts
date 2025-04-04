@@ -14,6 +14,11 @@ export const authOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET, // Make sure this is set
+  callbacks: {
+    async redirect({ url, baseUrl }: { url: string; baseUrl: string }) {
+      return "/generate"; // Redirect all successful logins to /generate
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

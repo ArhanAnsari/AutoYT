@@ -21,7 +21,7 @@ export default function Auth() {
           onClick={() => signIn("google")}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="w-full flex items-center justify-center bg-red-500 text-white py-3 rounded-lg shadow-md hover:bg-red-600 transition mb-4"
+          className="w-full flex items-center justify-center bg-blue-500 text-white py-3 rounded-lg shadow-md hover:bg-blue-600 transition mb-4"
         >
           <FaGoogle className="mr-3 text-xl" />
           Sign in with Google
