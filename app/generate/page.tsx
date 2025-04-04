@@ -1,54 +1,58 @@
 "use client";
-import { useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function GeneratePage() {
-  const { data: session } = useSession();
-  const [topic, setTopic] = useState("");
-  const [output, setOutput] = useState("");
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
-  async function handleGenerate() {
-    if (!session) {
-      alert("Please sign in to generate content.");
-      return;
+  // Redirect to /auth/signin if not authenticated
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth/signin");
     }
+  }, [status, router]);
 
-    const response = await fetch("/api/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ topic }),
-    });
-
-    const data = await response.json();
-    setOutput(JSON.stringify(data, null, 2));
+  if (status === "loading") {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <p className="text-lg text-gray-600">Loading...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="p-8">
-      <header className="flex justify-between">
-        <h1 className="text-2xl font-bold">AI YouTube Generator</h1>
-        {session ? (
-          <button onClick={() => signOut()} className="bg-red-500 px-4 py-2 text-white rounded">Sign Out</button>
-        ) : (
-          <button onClick={() => signIn("google")} className="bg-blue-500 px-4 py-2 text-white rounded">Sign In with Google</button>
-        )}
-      </header>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-rose-600 text-white p-8">
+      <div className="bg-white text-black rounded-2xl shadow-xl p-6 md:p-12 w-full max-w-3xl">
+        <h1 className="text-4xl font-bold text-center mb-4 text-rose-600">
+          AI Content Generator
+        </h1>
+        <p className="text-gray-600 text-center mb-6">
+          Generate amazing content with AI-powered tools!
+        </p>
 
-      {session && (
-        <>
-          <div className="mt-8">
-            <input
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              placeholder="Enter video topic"
-              className="border p-2 w-full"
-            />
-            <button onClick={handleGenerate} className="bg-green-500 text-white px-4 py-2 mt-4 rounded">Generate</button>
-          </div>
+        <div className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Enter a topic..."
+            className="w-full p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-rose-600"
+          />
+          <button className="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 rounded-lg shadow-lg transition">
+            Generate Content 🚀
+          </button>
+        </div>
 
-          <pre className="mt-6 p-4 bg-gray-100">{output}</pre>
-        </>
-      )}
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={() => router.push("/")}
+            className="text-rose-600 hover:underline"
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

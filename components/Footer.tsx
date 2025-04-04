@@ -7,8 +7,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   const otherLinks = [
-    { name: "Sign Up", href: "/auth/signup" },
-    { name: "Sign In", href: "/auth/signin" }
+    { name: "Sign Up", href: "/auth/signin" }
   ];
 
   const legalLinks = [
