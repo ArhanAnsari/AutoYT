@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Github, Twitter } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   const otherLinks = [
@@ -30,20 +30,24 @@ const Footer = () => {
               <p className="font-spaceGrotesk font-semibold text-xl">AutoYT</p>
             </a>
           </div>
-
+          
           <p className="text-muted-foreground">
             YouTube Content Creator, powered by AI.
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full max-w-[50rem]">
+
           <div className="flex flex-col gap-4">
             <h3 className="font-medium text-muted-foreground">Quick Links</h3>
             <nav>
               <ul className="flex flex-col gap-3">
                 {otherLinks.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} className="font-medium hover:underline">
+                    <a 
+                      href={link.href}
+                      className="font-medium hover:underline"
+                    >
                       {link.name}
                     </a>
                   </li>
@@ -52,13 +56,17 @@ const Footer = () => {
             </nav>
           </div>
 
+
           <div className="flex flex-col gap-4">
             <h3 className="font-medium text-muted-foreground">Legal</h3>
             <nav>
               <ul className="flex flex-col gap-3">
                 {legalLinks.map((link) => (
                   <li key={link.href}>
-                    <a href={link.href} className="font-medium hover:underline">
+                    <a 
+                      href={link.href}
+                      className="font-medium hover:underline"
+                    >
                       {link.name}
                     </a>
                   </li>
@@ -70,15 +78,7 @@ const Footer = () => {
       </div>
 
       <p className="text-center text-muted-foreground sm:text-left">
-        © {new Date().getFullYear()}{" "}
-        <Link
-          href="https://arhanansari.is-a.dev/"
-          target="_blank"
-          className="text-rose-600"
-        >
-          Arhan Ansari
-        </Link>
-        . All rights reserved.
+        © {new Date().getFullYear()} <Link href="https://arhanansari.is-a.dev/" target="_blank" className="text-rose-600">Arhan Ansari</Link>. All rights reserved.
       </p>
     </footer>
   );
