@@ -34,8 +34,13 @@ export default function Dashboard() {
     <div className="min-h-screen flex flex-col">
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="h-screen w-64 bg-rose-600 dark:bg-rose-700 p-5 text-white">
-          <h1 className="text-2xl font-bold text-rose-600 cursor-pointer" onClick={() => router.push("/")}>AutoYT</h1>
+        <aside className="h-screen w-64 bg-white dark:bg-rose-700 text-black dark:text-white p-5 shadow-lg">
+        <h1
+          className="text-2xl font-bold text-rose-600 dark:text-white cursor-pointer"
+          onClick={() => router.push("/")}
+        >
+        AutoYT
+      </h1>
           <nav className="mt-8 space-y-4">
             <NavItem icon={<Home size={20} />} label="Dashboard" />
             <NavItem icon={<Video size={20} />} label="AI Video" />
@@ -43,7 +48,6 @@ export default function Dashboard() {
             <NavItem icon={<Image size={20} />} label="Thumbnails" />
             <NavItem icon={<Upload size={20} />} label="Upload" />
           </nav>
-          {/* Header/Navbar */}
         {/* Authentication Buttons */}
         {session ? (
           <button
@@ -64,7 +68,7 @@ export default function Dashboard() {
 
         {/* Main Content */}
         <main className="flex-1 p-8">
-          <header className="flex justify-between items-center mb-6">
+          <header className="flex justify-between items-center mb-6 bg-white dark:bg-gray-800 shadow-md">
             <h2 className="text-2xl font-semibold">Dashboard</h2>
             <Button onClick={() => setDarkMode(!darkMode)}>
               {darkMode ? <SunIcon size={20} /> : <MoonIcon size={20} />}

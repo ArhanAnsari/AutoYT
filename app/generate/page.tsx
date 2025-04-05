@@ -4,11 +4,30 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { SunIcon, MoonIcon } from "lucide-react";
+import { Button } from "@/components/Button";
 
 export default function GeneratePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { theme, setTheme } = useTheme();
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const storedMode = localStorage.getItem("darkMode");
+    if (storedMode) {
+      setDarkMode(storedMode === "true");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("darkMode", String(darkMode));
+  }, [darkMode]);
 
   const [topic, setTopic] = useState("");
   const [loading, setLoading] = useState(false);
@@ -66,12 +85,9 @@ export default function GeneratePage() {
 
         <div className="flex items-center gap-4">
           {/* Theme Toggle */}
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="px-3 py-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-lg shadow-md"
-          >
-            {theme === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode"}
-          </button>
+         <Button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <SunIcon size={20} /> : <MoonIcon size={20} />}
+        </Button>
 
           {/* Authentication Buttons */}
           {session ? (
@@ -84,7 +100,7 @@ export default function GeneratePage() {
           ) : (
             <button
               onClick={() => signIn()}
-              className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-md transition"
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition"
             >
               Sign In
             </button>
