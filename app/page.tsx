@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Clapperboard, Youtube, Sparkles, Zap, ArrowRight } from "lucide-react";
+import { Clapperboard, PlayCircle, Sparkles, Zap, ArrowRight } from "lucide-react";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 
@@ -87,7 +87,7 @@ export default async function LandingPage() {
               </div>
               <div className="flex flex-col bg-gray-50 p-6 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="h-12 w-12 rounded-lg bg-white border flex items-center justify-center mb-4">
-                  <Youtube className="h-6 w-6 text-primary" />
+                  <PlayCircle className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Auto-Publishing</h3>
                 <p className="text-gray-500">Connect your channel once and we will automatically render and upload your final videos via YouTube API.</p>
