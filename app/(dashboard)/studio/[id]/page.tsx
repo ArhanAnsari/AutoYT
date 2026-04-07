@@ -36,7 +36,7 @@ export default function StudioPage({ params }: { params: Promise<{ id: string }>
     setAssemblyStatus("Checking assets...");
     
     try {
-      setAssemblyStatus("Sending to Remotion...");
+      setAssemblyStatus("Assembling video...");
       const response = await fetch("/api/assemble-video", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

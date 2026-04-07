@@ -20,7 +20,7 @@ export default function GeneratePage() {
     { id: "1", title: "Generate Script", status: "pending", description: "AI creates hooks, intro, body, and CTA" },
     { id: "2", title: "Generate Images", status: "pending", description: "AI generates visuals for each scene" },
     { id: "3", title: "Generate Narration", status: "pending", description: "Text-to-speech conversion" },
-    { id: "4", title: "Assemble Video", status: "pending", description: "Combine all assets with Remotion" },
+    { id: "4", title: "Assemble Video", status: "pending", description: "Combine all generated assets" },
     { id: "5", title: "Final Video", status: "pending", description: "Ready for upload to YouTube" },
   ]);
 
